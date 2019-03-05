@@ -1,0 +1,77 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>org.jadex</groupId>
+  <artifactId>jadex_project_test</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>jadex_project_test</name>
+  <url>http://maven.apache.org</url>
+
+  	<properties>
+  		<!-- Specify desired Jadex version here. -->
+		<jadex.version>3.0.98</jadex.version>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	</properties>
+
+	<repositories>
+		<repository>
+			<id>jadex-oss-releases</id>
+			<url>https://nexus.actoron.com/content/repositories/oss</url>
+		</repository>
+		<repository>
+			<id>jadex-oss-nightlies</id>
+			<url>https://nexus.actoron.com/content/repositories/oss-nightlies</url>
+		</repository>
+		<repository>
+			<id>jadex-pro-releases</id>
+			<url>http://nexus.actoron.com/nexus/content/repositories/pro</url>
+		</repository>
+		<repository>
+			<id>jadex-pro-nightlies</id>
+			<url>http://nexus.actoron.com/nexus/content/repositories/pro-nightlies</url>
+		</repository>
+	</repositories>
+
+	<build>
+		<resources>
+			<!-- Allow ADF files (.xml, .bpmn, ...) be placed in source folder -->
+			<resource>
+				<directory>src/main/java</directory>
+				<excludes>
+					<exclude>**/*.java</exclude>
+					<exclude>**/.svn/*</exclude>
+				</excludes>
+			</resource>
+		</resources>
+	</build>
+
+  	<dependencies>
+		<dependency>
+			<groupId>org.activecomponents.jadex</groupId>
+			<artifactId>jadex-distribution-standard</artifactId>
+			<!-- <artifactId>jadex-distribution-minimal</artifactId> -->
+			<!-- <artifactId>jadex-distribution-pro</artifactId> -->
+			<version>${jadex.version}</version>
+		</dependency>
+		
+		<!-- Webservice extension (enable if needed) -->
+		<!--
+		<dependency>
+			<groupId>org.activecomponents.jadex</groupId>
+			<artifactId>jadex-platform-extension-webservice</artifactId>
+			<version>${jadex.version}</version>
+		</dependency>
+		-->
+  	
+    	<dependency>
+      		<groupId>junit</groupId>
+      		<artifactId>junit</artifactId>
+      		<version>3.8.1</version>
+      		<scope>test</scope>
+    	</dependency>
+  	</dependencies>
+  	
+</project>
