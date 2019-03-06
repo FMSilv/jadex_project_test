@@ -8,8 +8,8 @@ public class Main {
 	public static void main(String[] args) {
         PlatformConfiguration config = PlatformConfiguration.getDefaultNoGui();
 
-        config.addComponent("iMessageEvent1.iSendMessageBDI.class");
-        config.addComponent("iMessageEvent1.iReceiveMessageBDI.class");
+        config.addComponent("sendServiceMessage.Chat1Agent.class");
+        config.addComponent("sendServiceMessage.Chat2Agent.class");
         
         Starter.createPlatform(config).get();
 	}

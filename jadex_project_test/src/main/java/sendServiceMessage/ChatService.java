@@ -3,6 +3,7 @@ package sendServiceMessage;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
+import jadex.bridge.IExternalAccess;
 import jadex.bridge.IInternalAccess;
 import jadex.bridge.service.annotation.Service;
 import jadex.bridge.service.annotation.ServiceComponent;
@@ -24,15 +25,11 @@ public class ChatService implements IChatService{
 	IClockService clock;
 	DateFormat format;
 	
-	ChatGui gui;
-	
-	String sender;
-	String message;
-	
+	MessageManager messageManager;
 	
 	@ServiceStart
 	public IFuture<Void> startService() {
-//		final IExternalAccess exta = agent.getExternalAccess();
+		final IExternalAccess exta = agent.getExternalAccess();
 		format = new SimpleDateFormat("hh:mm:ss");
 		final Future<Void> ret = new Future<Void>();
 		IFuture<IClockService> clockservice = requiredServicesFeature.getRequiredService("clockservice");
@@ -40,20 +37,22 @@ public class ChatService implements IChatService{
 		{
 		    public void customResultAvailable(IClockService result)
 		    {
+		    	String message = "Mensagem a enviar";
 		        clock = result;
+		        messageManager = createMessageManager(exta, message);
 		        ret.setResult(null);
 		    }
 		});
 		return ret;
 	}
 	
-	public void message(String sender, String text) {
-		this.sender = sender;
-		this.message = text;
+	protected MessageManager createMessageManager(IExternalAccess agent, String message) {
+		return new MessageManager(agent, message);
 	}
 	
-	public String getMessage() {
-		return this.message;
+	public void message(String sender, String message) {
+		String receiver = agent.getComponentIdentifier().getLocalName();
+		messageManager.addMessage(sender, receiver, message);
 	}
 	
 }

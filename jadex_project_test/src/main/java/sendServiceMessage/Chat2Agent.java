@@ -1,14 +1,8 @@
 package sendServiceMessage;
 
-import jadex.bridge.IInternalAccess;
 import jadex.bridge.service.RequiredServiceInfo;
-import jadex.bridge.service.component.IRequiredServicesFeature;
 import jadex.bridge.service.types.clock.IClockService;
-import jadex.commons.future.DefaultResultListener;
-import jadex.commons.future.IFuture;
 import jadex.micro.annotation.Agent;
-import jadex.micro.annotation.AgentCreated;
-import jadex.micro.annotation.AgentFeature;
 import jadex.micro.annotation.Binding;
 import jadex.micro.annotation.Description;
 import jadex.micro.annotation.Implementation;

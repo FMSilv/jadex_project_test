@@ -1,20 +1,8 @@
 package sendServiceMessage;
 
-import java.util.Collection;
-
-import agentsChat.IChatService;
-import jadex.bridge.IComponentStep;
-import jadex.bridge.IExternalAccess;
-import jadex.bridge.IInternalAccess;
 import jadex.bridge.service.RequiredServiceInfo;
-import jadex.bridge.service.component.IRequiredServicesFeature;
 import jadex.bridge.service.types.clock.IClockService;
-import jadex.commons.future.DefaultResultListener;
-import jadex.commons.future.IFuture;
 import jadex.micro.annotation.Agent;
-import jadex.micro.annotation.AgentBody;
-import jadex.micro.annotation.AgentCreated;
-import jadex.micro.annotation.AgentFeature;
 import jadex.micro.annotation.Binding;
 import jadex.micro.annotation.Description;
 import jadex.micro.annotation.Implementation;
@@ -33,10 +21,10 @@ import jadex.micro.annotation.RequiredServices;
 @ProvidedServices(@ProvidedService(type=IChatService.class, implementation=@Implementation(ChatService.class)))
 public class Chat1Agent {
 	
-	IExternalAccess agent;
-	
-	@AgentFeature
-	IRequiredServicesFeature requiredServicesFeature;
+//	IExternalAccess agent;
+//	
+//	@AgentFeature
+//	IRequiredServicesFeature requiredServicesFeature;
 	
 //	@AgentCreated
 //	public void executeBody() {
@@ -49,31 +37,31 @@ public class Chat1Agent {
 //		});
 //	}
 	
-	@AgentBody
-	public void executeBody() {
-	    final String text = "";
-	    agent.scheduleStep(new IComponentStep<Void>()
-	    {
-	        public IFuture<Void> execute(IInternalAccess ia)
-	        {
-	            IFuture<Collection<IChatService>> chatservices = ia.getComponentFeature(IRequiredServicesFeature.class).getRequiredServices("chatservices");
-	            chatservices.addResultListener(new DefaultResultListener<Collection<IChatService>>()
-	            {
-	                public void resultAvailable(Collection<IChatService> result)
-	                {
-	                	for(IChatService iChatService : result)
-	                    {
-	                		if(!text.isEmpty())
-	                		{
-	                            iChatService.message(agent.getComponentIdentifier().getLocalName(), text);
-	                		}
-	                    }
-	                }
-	            });
-	            return IFuture.DONE;
-	        }
-	    });
-	}
+//	@AgentBody
+//	public void executeBody() {
+//	    final String text = "";
+//	    agent.scheduleStep(new IComponentStep<Void>()
+//	    {
+//	        public IFuture<Void> execute(IInternalAccess ia)
+//	        {
+//	            IFuture<Collection<IChatService>> chatservices = ia.getComponentFeature(IRequiredServicesFeature.class).getRequiredServices("chatservices");
+//	            chatservices.addResultListener(new DefaultResultListener<Collection<IChatService>>()
+//	            {
+//	                public void resultAvailable(Collection<IChatService> result)
+//	                {
+//	                	for(IChatService iChatService : result)
+//	                    {
+//	                		if(!text.isEmpty())
+//	                		{
+//	                            iChatService.message(agent.getComponentIdentifier().getLocalName(), text);
+//	                		}
+//	                    }
+//	                }
+//	            });
+//	            return IFuture.DONE;
+//	        }
+//	    });
+//	}
 	
 
 	
