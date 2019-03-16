@@ -414,89 +414,125 @@
 			<p0:property __ID="323" type="allowduplicates">false</p0:property>
 		</p0:properties>
 	</p0:properties>
-	<p0:properties __ID="324" type="StarterServicePanel">
-		<p0:properties __ID="325" type="mpanel">
-			<p0:property __ID="326" type="tree"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
+	<p0:properties __ID="324" type="awa@DESKTOP-7B836GA_055">
+		<p0:property __ID="325" type="fast">false</p0:property>
+		<p0:property __ID="326" type="autocreate">true</p0:property>
+		<p0:property __ID="327" type="autodelete">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="328" type="awa@DESKTOP-7B836GA_ead">
+		<p0:property __ID="329" type="fast">false</p0:property>
+		<p0:property __ID="330" type="autocreate">true</p0:property>
+		<p0:property __ID="331" type="autodelete">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="332" type="awa@DESKTOP-7B836GA_8e9">
+		<p0:property __ID="333" type="fast">false</p0:property>
+		<p0:property __ID="334" type="autocreate">true</p0:property>
+		<p0:property __ID="335" type="autodelete">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="336" type="awa@DESKTOP-7B836GA_9d8">
+		<p0:property __ID="337" type="fast">false</p0:property>
+		<p0:property __ID="338" type="autocreate">true</p0:property>
+		<p0:property __ID="339" type="autodelete">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="340" type="awa@DESKTOP-7B836GA_561">
+		<p0:property __ID="341" type="fast">false</p0:property>
+		<p0:property __ID="342" type="autocreate">true</p0:property>
+		<p0:property __ID="343" type="autodelete">true</p0:property>
+	</p0:properties>
+	<p0:properties __ID="344" type="StarterServicePanel">
+		<p0:properties __ID="345" type="mpanel">
+			<p0:property __ID="346" type="tree"><![CDATA[<?xml version="1.0" encoding="utf-8"?>
 <p0:TreeProperties xmlns:p0="typeinfo:jadex.base.gui.filetree" __ID="0">
 	<selectedNode>
-		<p0:NodePath __ID="1" entry="1">
+		<p0:NodePath __ID="1" entry="0">
 			<path>
-				<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="2" __len="1">
+				<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="2" __len="2">
 					<entries>
-						<p1:String __ID="3">D3_ReceivingMessages.bpmn2</p1:String>
+						<p1:String __ID="3">sendServiceMessage</p1:String>
+						<p1:String __ID="4">Chat2Agent.class</p1:String>
 					</entries>
 				</p1:String__1>
 			</path>
 		</p0:NodePath>
 	</selectedNode>
 	<expandedNodes>
-		<p0:NodePath__1 __ID="4" __len="1">
+		<p0:NodePath__1 __ID="5" __len="2">
 			<entries>
-				<p0:NodePath __ID="5" entry="1">
+				<p0:NodePath __ID="6" entry="0">
 					<path>
-						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="6" __len="0"></p1:String__1>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="7" __len="0"></p1:String__1>
+					</path>
+				</p0:NodePath>
+				<p0:NodePath __ID="8" entry="0">
+					<path>
+						<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="9" __len="1">
+							<entries>
+								<p1:String __ID="10">sendServiceMessage</p1:String>
+							</entries>
+						</p1:String__1>
 					</path>
 				</p0:NodePath>
 			</entries>
 		</p0:NodePath__1>
 	</expandedNodes>
 	<rootPathEntries>
-		<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="7" __len="2">
+		<p1:String__1 xmlns:p1="typeinfo:java.lang" __ID="11" __len="1">
 			<entries>
-				<p1:String __ID="8">target\classes</p1:String>
-				<p1:String __ID="9">src\bpmn</p1:String>
+				<p1:String __ID="12">target\classes</p1:String>
 			</entries>
 		</p1:String__1>
 	</rootPathEntries>
 </p0:TreeProperties>
 ]]></p0:property>
-			<p0:properties __ID="327" type="mic">
-				<p0:property __ID="328" type="Micro Agent">true</p0:property>
-				<p0:property __ID="329" type="BPMN Legacy Process">true</p0:property>
-				<p0:property __ID="330" type="BPMN Process">true</p0:property>
+			<p0:properties __ID="347" type="mic">
+				<p0:property __ID="348" type="Micro Agent">true</p0:property>
+				<p0:property __ID="349" type="BPMN Legacy Process">true</p0:property>
+				<p0:property __ID="350" type="Component">true</p0:property>
+				<p0:property __ID="351" type="BPMN Process">true</p0:property>
 			</p0:properties>
 		</p0:properties>
-		<p0:properties __ID="331" type="spanel">
-			<p0:property __ID="332" type="model">src\bpmn\D3_ReceivingMessages.bpmn2</p0:property>
-			<p0:property __ID="333" type="ridurl">file:src/bpmn</p0:property>
-			<p0:property __ID="334" type="globalrid"></p0:property>
-			<p0:property __ID="335" type="startsuspended">false</p0:property>
-			<p0:property __ID="336" type="autogenerate">false</p0:property>
-			<p0:property __ID="337" type="number">1</p0:property>
-			<p0:property __ID="338" type="name">D3_ReceivingMessages</p0:property>
+		<p0:properties __ID="352" type="spanel">
+			<p0:property __ID="353" type="model">target\classes\sendServiceMessage\Chat2Agent.class</p0:property>
+			<p0:property __ID="354" type="ridurl">file:target/classes</p0:property>
+			<p0:property __ID="355" type="globalrid"></p0:property>
+			<p0:property __ID="356" type="startsuspended">false</p0:property>
+			<p0:property __ID="357" type="autogenerate">false</p0:property>
+			<p0:property __ID="358" type="number">1</p0:property>
+			<p0:property __ID="359" type="name">Chat2</p0:property>
+			<p0:property __ID="360" type="argument"></p0:property>
 		</p0:properties>
 	</p0:properties>
-	<p0:properties __ID="339" type="clockservice">
-		<p0:property __ID="340" type="type">system</p0:property>
-		<p0:property __ID="341" type="delta">100</p0:property>
-		<p0:property __ID="342" type="dilation">1.0</p0:property>
+	<p0:properties __ID="361" type="clockservice">
+		<p0:property __ID="362" type="type">system</p0:property>
+		<p0:property __ID="363" type="delta">100</p0:property>
+		<p0:property __ID="364" type="dilation">1.0</p0:property>
 	</p0:properties>
-	<p0:properties __ID="343" type="simulationservice">
-		<p0:property __ID="344" type="executing">true</p0:property>
+	<p0:properties __ID="365" type="simulationservice">
+		<p0:property __ID="366" type="executing">true</p0:property>
 	</p0:properties>
-	<p0:properties __ID="345" type="chat">
-		<p0:property __ID="346" type="nickname">user_1c1</p0:property>
+	<p0:properties __ID="367" type="chat">
+		<p0:property __ID="368" type="nickname">user_1c1</p0:property>
 	</p0:properties>
-	<p0:properties __ID="347" type="awa@DESKTOP-7B836GA_055">
-		<p0:property __ID="348" type="fast">false</p0:property>
-		<p0:property __ID="349" type="autocreate">true</p0:property>
-		<p0:property __ID="350" type="autodelete">true</p0:property>
+	<p0:properties __ID="369" type="awa@DESKTOP-7B836GA_145">
+		<p0:property __ID="370" type="fast">false</p0:property>
+		<p0:property __ID="371" type="autocreate">true</p0:property>
+		<p0:property __ID="372" type="autodelete">true</p0:property>
 	</p0:properties>
-	<p0:properties __ID="351" type="securityservice">
-		<p0:property __ID="352" type="validityduration">327680</p0:property>
-		<p0:property __ID="353" type="usepass">true</p0:property>
-		<p0:property __ID="354" type="password">56027436-58e</p0:property>
-		<p0:property __ID="355" type="selected_mechanism">0</p0:property>
-		<p0:property __ID="356" type="trustedlan">false</p0:property>
-		<p0:property __ID="357" type="storepath">./keystore</p0:property>
-		<p0:property __ID="358" type="storepass">keystore</p0:property>
-		<p0:property __ID="359" type="keypass">keystore</p0:property>
-		<p0:property __ID="360" type="selmech">0</p0:property>
-		<p0:properties __ID="361" type="DecentralizedAcquisitionMechanism">
-			<p0:property __ID="362" type="responses">1</p0:property>
+	<p0:properties __ID="373" type="securityservice">
+		<p0:property __ID="374" type="validityduration">327680</p0:property>
+		<p0:property __ID="375" type="usepass">true</p0:property>
+		<p0:property __ID="376" type="password">56027436-58e</p0:property>
+		<p0:property __ID="377" type="selected_mechanism">0</p0:property>
+		<p0:property __ID="378" type="trustedlan">false</p0:property>
+		<p0:property __ID="379" type="storepath">./keystore</p0:property>
+		<p0:property __ID="380" type="storepass">keystore</p0:property>
+		<p0:property __ID="381" type="keypass">keystore</p0:property>
+		<p0:property __ID="382" type="selmech">0</p0:property>
+		<p0:properties __ID="383" type="DecentralizedAcquisitionMechanism">
+			<p0:property __ID="384" type="responses">1</p0:property>
 		</p0:properties>
-		<p0:properties __ID="363" type="TTPAcquisitionMechanism">
-			<p0:property __ID="364" type="verify">true</p0:property>
+		<p0:properties __ID="385" type="TTPAcquisitionMechanism">
+			<p0:property __ID="386" type="verify">true</p0:property>
 		</p0:properties>
 	</p0:properties>
 </p0:properties>

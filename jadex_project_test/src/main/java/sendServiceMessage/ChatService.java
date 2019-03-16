@@ -30,6 +30,8 @@ public class ChatService implements IChatService{
 	@ServiceStart
 	public IFuture<Void> startService() {
 		final IExternalAccess exta = agent.getExternalAccess();
+		System.out.println(exta.getArguments().get().get("message"));
+
 		format = new SimpleDateFormat("hh:mm:ss");
 		final Future<Void> ret = new Future<Void>();
 		IFuture<IClockService> clockservice = requiredServicesFeature.getRequiredService("clockservice");
@@ -50,9 +52,17 @@ public class ChatService implements IChatService{
 		return new MessageManager(agent, message);
 	}
 	
-	public void message(String sender, String message) {
+	public void message(String sender, String message) {		
 		String receiver = agent.getComponentIdentifier().getLocalName();
 		messageManager.addMessage(sender, receiver, message);
+	}
+
+	public MessageManager getMessageManager() {
+		return messageManager;
+	}
+
+	public void setMessageManager(MessageManager messageManager) {
+		this.messageManager = messageManager;
 	}
 	
 }

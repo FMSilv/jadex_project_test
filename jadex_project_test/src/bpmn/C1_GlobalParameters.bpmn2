@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<semantic:definitions targetNamespace="http://www.activecomponents.org/bpmn/"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                      xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                      xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                      xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL"
+                      xmlns:jadex="http://www.activecomponents.org/bpmnextensions"
+                      xmlns:jadexvisual="http://www.activecomponents.org/bpmnvisualextensions">
+  <semantic:extension>
+    <jadex:contextvariables>
+      <jadex:contextvariable name="logins" type="java.lang.Integer">
+        <jadex:value>0</jadex:value>
+      </jadex:contextvariable>
+      <jadex:contextvariable name="customer" type="java.lang.String">
+        <jadex:value>&quot;Carl Customer&quot;</jadex:value>
+      </jadex:contextvariable>
+    </jadex:contextvariables>
+  </semantic:extension>
+  <semantic:process name="Pool" id="u1K7Tv/KNxxy48LW">
+    <semantic:startEvent id="s1ApmKgtEr1YkhMd">
+      <semantic:outgoing>hOBjcmFQaC55oYqa</semantic:outgoing>
+    </semantic:startEvent>
+    <semantic:task name="Welcome" id="1/6Gn32b77bjQOVk">
+      <semantic:incoming>hOBjcmFQaC55oYqa</semantic:incoming>
+      <semantic:outgoing>Vy5SuuXEMpW6dDGY</semantic:outgoing>
+      <semantic:extensionElements>
+        <jadex:class>jadex.bpmn.runtime.task.PrintTask</jadex:class>
+        <jadex:parameter direction="in" name="text" type="java.lang.String">&quot;Welcome &quot;+customer+&quot;!&quot;</jadex:parameter>
+      </semantic:extensionElements>
+    </semantic:task>
+    <semantic:task name="Update Loging" id="6tgZLpPbWCK4q8nm">
+      <semantic:incoming>Vy5SuuXEMpW6dDGY</semantic:incoming>
+      <semantic:outgoing>Ri9Zf9GL9nVZp12y</semantic:outgoing>
+      <semantic:extensionElements>
+        <jadex:class>jadex.bpmn.runtime.task.WriteParameterTask</jadex:class>
+        <jadex:parameter direction="in" name="name" type="java.lang.String">&quot;logins&quot;</jadex:parameter>
+        <jadex:parameter direction="in" name="value" type="java.lang.Object">logins+1</jadex:parameter>
+      </semantic:extensionElements>
+    </semantic:task>
+    <semantic:task name="Status" id="Aw7bk72/1orm8E/T">
+      <semantic:incoming>Ri9Zf9GL9nVZp12y</semantic:incoming>
+      <semantic:outgoing>Obo0vT3NSQKo7Iix</semantic:outgoing>
+      <semantic:extensionElements>
+        <jadex:class>jadex.bpmn.runtime.task.PrintTask</jadex:class>
+        <jadex:parameter direction="in" name="text" type="java.lang.String">&quot;Customer &quot;+customer+&quot; has logged in &quot;+logins+&quot; times.&quot;</jadex:parameter>
+      </semantic:extensionElements>
+    </semantic:task>
+    <semantic:endEvent id="cOAWgM7iJvs8uUOB">
+      <semantic:incoming>Obo0vT3NSQKo7Iix</semantic:incoming>
+    </semantic:endEvent>
+    <semantic:sequenceFlow sourceRef="s1ApmKgtEr1YkhMd" targetRef="1/6Gn32b77bjQOVk" id="hOBjcmFQaC55oYqa">
+    </semantic:sequenceFlow>
+    <semantic:sequenceFlow sourceRef="1/6Gn32b77bjQOVk" targetRef="6tgZLpPbWCK4q8nm" id="Vy5SuuXEMpW6dDGY">
+    </semantic:sequenceFlow>
+    <semantic:sequenceFlow sourceRef="6tgZLpPbWCK4q8nm" targetRef="Aw7bk72/1orm8E/T" id="Ri9Zf9GL9nVZp12y">
+    </semantic:sequenceFlow>
+    <semantic:sequenceFlow sourceRef="Aw7bk72/1orm8E/T" targetRef="cOAWgM7iJvs8uUOB" id="Obo0vT3NSQKo7Iix">
+    </semantic:sequenceFlow>
+    <semantic:extensionElements>
+    </semantic:extensionElements>
+  </semantic:process>
+  <bpmndi:BPMNDiagram>
+    <bpmndi:BPMNPlane>
+      <bpmndi:BPMNShape bpmnElement="u1K7Tv/KNxxy48LW">
+        <dc:Bounds height="600.0" width="3000.0" x="50.0" y="50.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="s1ApmKgtEr1YkhMd">
+        <dc:Bounds height="40.0" width="40.0" x="120.0" y="110.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="1/6Gn32b77bjQOVk">
+        <dc:Bounds height="100.0" width="160.0" x="260.0" y="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="6tgZLpPbWCK4q8nm">
+        <dc:Bounds height="100.0" width="160.0" x="480.0" y="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="Aw7bk72/1orm8E/T">
+        <dc:Bounds height="100.0" width="160.0" x="670.0" y="80.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape bpmnElement="cOAWgM7iJvs8uUOB">
+        <dc:Bounds height="40.0" width="40.0" x="900.0" y="110.0"/>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge bpmnElement="hOBjcmFQaC55oYqa">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Vy5SuuXEMpW6dDGY">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Ri9Zf9GL9nVZp12y">
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge bpmnElement="Obo0vT3NSQKo7Iix">
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</semantic:definitions>
+

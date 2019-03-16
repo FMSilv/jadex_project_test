@@ -9,6 +9,7 @@ import jadex.bridge.service.component.IRequiredServicesFeature;
 import jadex.commons.future.DefaultResultListener;
 import jadex.commons.future.IFuture;
 
+
 public class MessageManager {
 
 	protected String sender;
@@ -53,7 +54,6 @@ public class MessageManager {
 		System.out.println(getReceiver());
 		System.out.println(getMessage());
 	}
-
 	
 	public String getSender() {
 		return sender;

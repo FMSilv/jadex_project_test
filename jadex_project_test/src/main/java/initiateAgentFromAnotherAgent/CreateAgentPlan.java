@@ -26,7 +26,7 @@ public class CreateAgentPlan {
 	    	
 	    	/** Starting the component **/
 	    	ITuple2Future<IComponentIdentifier,java.util.Map<java.lang.String,java.lang.Object>> iTupleFut = this.cms.createComponent("newAgentBDIAgent", "initiateAgentFromAnotherAgent.NewAgentBDI.class", parameters);
-	    	IComponentIdentifier cid = iTupleFut.getFirstResult();
+	    	IComponentIdentifier cid = iTupleFut.getFirstResult().getParent();
 	    	System.out.println("Started component: " + cid);
 	  }
 	
