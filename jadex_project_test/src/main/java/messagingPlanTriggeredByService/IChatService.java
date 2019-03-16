@@ -4,6 +4,6 @@ import jadex.commons.future.IFuture;
 
 public interface IChatService {
 
-	  public IFuture<String> sendMessage(String message, String sender);
+	  public IFuture<String> sendMessage(String sender, String receiver, String message);
 	
 }

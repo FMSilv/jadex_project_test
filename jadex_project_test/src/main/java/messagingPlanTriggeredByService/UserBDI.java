@@ -1,5 +1,11 @@
 package messagingPlanTriggeredByService;
 
+import jadex.bdiv3.IBDIAgent;
+import jadex.bdiv3.annotation.Plan;
+import jadex.bdiv3.annotation.PlanBody;
+import jadex.bdiv3.annotation.PlanPrecondition;
+import jadex.bdiv3.annotation.ServiceTrigger;
+import jadex.bdiv3.annotation.Trigger;
 import jadex.bridge.IInternalAccess;
 import jadex.bridge.service.RequiredServiceInfo;
 import jadex.bridge.service.search.SServiceProvider;
@@ -8,8 +14,14 @@ import jadex.commons.future.IntermediateDefaultResultListener;
 import jadex.commons.gui.future.SwingResultListener;
 import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.AgentBody;
+import jadex.micro.annotation.Implementation;
+import jadex.micro.annotation.ProvidedService;
+import jadex.micro.annotation.ProvidedServices;
 
 @Agent
+@ProvidedServices(
+		@ProvidedService(name="transser", type=IChatService.class, implementation=@Implementation(IBDIAgent.class))
+)
 public class UserBDI {
 
     @Agent
@@ -18,34 +30,50 @@ public class UserBDI {
     @AgentBody
     public void body()
     {
-    	sendMessage();
+    	sendMessage("ThirdAgentTestBDI");
     }
     
     
-    public void sendMessage() {
+    public void sendMessage(String receiver) {
         SServiceProvider.getServices(agent, IChatService.class, RequiredServiceInfo.SCOPE_PLATFORM)
         .addResultListener(new IntermediateDefaultResultListener<IChatService>()
-    {
-        public void intermediateResultAvailable(IChatService ts)
         {
-            ts.sendMessage("OLA", agent.getComponentIdentifier().getLocalName())
-                .addResultListener(new SwingResultListener<String>(new IResultListener<String>()
-            {
-                public void resultAvailable(String gword) 
-                {
-                	System.out.println(gword);
-//                                    tfg.setText(gword);
-                }
-
-                public void exceptionOccurred(Exception exception)
-                {
-                    exception.printStackTrace();
-//                                    tfg.setText(exception.getMessage());
-                }
-            }));
-        }
-    });
+	        public void intermediateResultAvailable(IChatService ts)
+	        {
+	            ts.sendMessage(agent.getComponentIdentifier().getLocalName(), "ThirdAgentTest", "dog")
+	                .addResultListener(new SwingResultListener<String>(new IResultListener<String>()
+	            {
+	                public void resultAvailable(String response) 
+	                {
+	                	System.out.println("Message Received: "+response);
+	                }
+	
+	                public void exceptionOccurred(Exception exception)
+	                {
+	                    exception.printStackTrace();
+	                }
+	            }));
+	        }
+        });
     }
+    
+    
+	@Plan(trigger=@Trigger(service=@ServiceTrigger(type=IChatService.class)))
+	public class TranslatePlan
+	{
+	    @PlanPrecondition
+	    public boolean checkPrecondition(Object[] params)
+	    {
+	    	return params[1].equals(agent.getComponentIdentifier().getLocalName());
+	    }
+	    
+	    @PlanBody
+	    public String body(Object[] params)
+	    {
+	    	System.out.println("Sender: "+params[0]+"/ Receiver: "+params[1]+"/ Message: "+params[2]);
+	    	return "Chegou a UserBDI";
+	    }
+	}
     
     
 }

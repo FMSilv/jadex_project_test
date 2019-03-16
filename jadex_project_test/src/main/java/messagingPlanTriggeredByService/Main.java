@@ -9,7 +9,9 @@ public class Main {
         PlatformConfiguration config = PlatformConfiguration.getDefaultNoGui();
 
         config.addComponent("messagingPlanTriggeredByService.TranslationBDI.class");
+        config.addComponent("messagingPlanTriggeredByService.ThirdAgentTestBDI.class");
         config.addComponent("messagingPlanTriggeredByService.UserBDI.class");
+        
         
         Starter.createPlatform(config).get();
 	}
