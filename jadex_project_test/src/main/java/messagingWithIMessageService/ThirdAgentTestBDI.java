@@ -1,4 +1,4 @@
-package messagingPlanTriggeredByService;
+package messagingWithIMessageService;
 
 import jadex.bdiv3.IBDIAgent;
 import jadex.bdiv3.annotation.Plan;
@@ -7,14 +7,16 @@ import jadex.bdiv3.annotation.PlanPrecondition;
 import jadex.bdiv3.annotation.ServiceTrigger;
 import jadex.bdiv3.annotation.Trigger;
 import jadex.bridge.IInternalAccess;
+import jadex.bridge.service.types.message.IMessageService;
 import jadex.micro.annotation.Agent;
 import jadex.micro.annotation.Implementation;
 import jadex.micro.annotation.ProvidedService;
 import jadex.micro.annotation.ProvidedServices;
 
 @Agent
-@ProvidedServices(
-	@ProvidedService(name="transser", type=IChatService.class, implementation=@Implementation(IBDIAgent.class))
+@ProvidedServices
+(
+	@ProvidedService(name="transser", type=IMessageService.class, implementation=@Implementation(IBDIAgent.class))
 )
 public class ThirdAgentTestBDI {
 
@@ -22,7 +24,7 @@ public class ThirdAgentTestBDI {
     protected IInternalAccess agent;
 	
 	
-	@Plan(trigger=@Trigger(service=@ServiceTrigger(type=IChatService.class)))
+	@Plan(trigger=@Trigger(service=@ServiceTrigger(type=IMessageService.class)))
 	public class TranslatePlan
 	{
 	    @PlanPrecondition
@@ -34,8 +36,8 @@ public class ThirdAgentTestBDI {
 	    @PlanBody
 	    public String body(Object[] params)
 	    {
-	    	System.out.println("Sender: "+params[0].toString()+" / Receiver: "+params[1].toString()+" / Message: "+params[2]);
-	    	return "Obigado pelo contacto "+params[0].toString()+". Eu, o " + agent.getComponentIdentifier().getLocalName() + ", agradeço." + params[2];
+	    	System.out.println("Sender: "+params[0]+"/ Receiver: "+params[1]+"/ Message: "+params[2]);
+	    	return "Obigado pelo contacto "+params[0]+". Eu, o ThirdAgentTestBDI, agradeço.";
 	    }
 	}
 }

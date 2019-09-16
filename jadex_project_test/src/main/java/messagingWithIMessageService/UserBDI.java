@@ -1,4 +1,4 @@
-package messagingPlanTriggeredByService;
+package messagingWithIMessageService;
 
 import jadex.bdiv3.IBDIAgent;
 import jadex.bdiv3.annotation.Plan;
@@ -9,6 +9,7 @@ import jadex.bdiv3.annotation.Trigger;
 import jadex.bridge.IInternalAccess;
 import jadex.bridge.service.RequiredServiceInfo;
 import jadex.bridge.service.search.SServiceProvider;
+import jadex.bridge.service.types.message.IMessageService;
 import jadex.commons.future.IResultListener;
 import jadex.commons.future.IntermediateDefaultResultListener;
 import jadex.commons.gui.future.SwingResultListener;
@@ -19,9 +20,11 @@ import jadex.micro.annotation.ProvidedService;
 import jadex.micro.annotation.ProvidedServices;
 
 @Agent
-@ProvidedServices(
-		@ProvidedService(name="transser", type=IChatService.class, implementation=@Implementation(IBDIAgent.class))
-)
+@ProvidedServices
+({
+//	@ProvidedService(name="registryService", type=IRegistryService.class),
+	@ProvidedService(name="transser", type=IMessageService.class, implementation=@Implementation(IBDIAgent.class))
+})
 public class UserBDI {
 
     @Agent
@@ -30,18 +33,17 @@ public class UserBDI {
     @AgentBody
     public void body()
     {
-    	sendMessage("ThirdAgentTest", "dog");
-    	sendMessage("ThirdAgentTest", "cat");
+    	sendMessage("ThirdAgentTestBDI");
     }
     
     
-    public void sendMessage(final String receiver, final String message) {
+    public void sendMessage(String receiver) {
         SServiceProvider.getServices(agent, IChatService.class, RequiredServiceInfo.SCOPE_PLATFORM)
         .addResultListener(new IntermediateDefaultResultListener<IChatService>()
         {
 	        public void intermediateResultAvailable(IChatService ts)
 	        {
-	            ts.sendMessage(agent.getComponentIdentifier().getLocalName(), receiver, message)
+	            ts.sendMessage(agent.getComponentIdentifier().getLocalName(), "ThirdAgentTest", "dog")
 	                .addResultListener(new SwingResultListener<String>(new IResultListener<String>()
 	            {
 	                public void resultAvailable(String response) 
@@ -58,10 +60,11 @@ public class UserBDI {
 	            }));
 	        }
         });
-    }
+    } 
     
     
-	@Plan(trigger=@Trigger(service=@ServiceTrigger(type=IChatService.class)))
+    
+	@Plan(trigger=@Trigger(service=@ServiceTrigger(type=IMessageService.class)))
 	public class TranslatePlan
 	{
 	    @PlanPrecondition
